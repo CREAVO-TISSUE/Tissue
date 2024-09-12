@@ -1,8 +1,7 @@
-use axum::{debug_handler, http::StatusCode, response::IntoResponse};
-use axum_extra::extract::Form;
+use axum::{debug_handler, http::StatusCode, response::IntoResponse, extract::Form};
 use tracing::debug;
 
-#[derive(serde::Deserialize, Debug, Default)]
+#[derive(serde::Deserialize, Debug)]
 pub struct Subscription {
     pub email: String,
 }
