@@ -1,10 +1,10 @@
 [Unit]
-Description="Api Service for Tissue Store"
+Description="Silk API service"
 
 [Service]
 User=tissue
 WorkingDirectory=/home/tissue/Tissue/Sink
-ExecStart=/home/tissue/.cargo/bin/cargo run --release
+ExecStart=cargo run --release
 
 [Install]
 WantedBy=multi-user.target
