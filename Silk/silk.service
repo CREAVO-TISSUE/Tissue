@@ -2,8 +2,8 @@
 Description="Silk API service"
 
 [Service]
-User=root
-WorkingDirectory=/home/tissue/Tissue/Sink
+User=tissue
+WorkingDirectory=/home/tissue/Tissue/Silk
 ExecStart=/home/tissue/.cargo/bin/silk
 
 [Install]
