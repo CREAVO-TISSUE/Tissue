@@ -1,0 +1,10 @@
+[Unit]
+Description="Tissue Store service"
+
+[Service]
+User=tissue
+WorkingDirectory=/home/tissue/Tissue/Store
+ExecStart=/home/tissue/.cargo/bin/store
+
+[Install]
+WantedBy=multi-user.target
