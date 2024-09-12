@@ -3,6 +3,7 @@ Description="Silk API service"
 
 [Service]
 User=tissue
+EnvironmentFile=/home/tissue/.cargo/env
 WorkingDirectory=/home/tissue/Tissue/Sink
 ExecStart=cargo run --release
 
