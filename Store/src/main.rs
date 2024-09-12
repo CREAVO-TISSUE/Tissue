@@ -11,6 +11,10 @@ const ADDR: &str = "127.0.0.1:3000";
 
 #[tokio::main]
 async fn main() -> Result<()> {
+    if std::env::var("RUST_LOG").is_err() {
+        std::env::set_var("RUST_LOG", "debug");
+    }
+
     tracing_subscriber::fmt::init();
 
     let app = Router::new()

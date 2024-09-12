@@ -11,6 +11,10 @@ const ADDR: &str = "127.0.0.1:4000"; // Address to bind to
 
 #[tokio::main] // Main function
 async fn main() -> Result<()> {
+    if std::env::var("RUST_LOG").is_err() {
+        std::env::set_var("RUST_LOG", "debug"); // Set the log level to info if it is not set
+    }
+
     tracing_subscriber::fmt::init(); // Initialize the logger
 
     let app = Router::new() // Create a new Router
