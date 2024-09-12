@@ -1,10 +1,10 @@
-[unit]
+[Unit]
 Description="Api Service for Tissue Store"
 
-[service]
+[Service]
 User=tissue
 WorkingDirectory=/home/tissue/Tissue/Sink
 ExecStart=/home/tissue/.cargo/bin/cargo run --release
 
-[install]
+[Install]
 WantedBy=multi-user.target
