@@ -2,10 +2,9 @@
 Description="Silk API service"
 
 [Service]
-User=tissue
-EnvironmentFile=/home/tissue/.cargo/env
+User=root
 WorkingDirectory=/home/tissue/Tissue/Sink
-ExecStart=cargo run --release
+ExecStart=/home/tissue/.cargo/bin/silk
 
 [Install]
 WantedBy=multi-user.target
