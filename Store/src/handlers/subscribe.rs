@@ -12,5 +12,5 @@ pub struct Subscribe {
 
 pub async fn subscribe(Form(subscribe): Form<Subscribe>) -> impl IntoResponse {
     info!("Subscribed: {}", subscribe.email);
-    Redirect::temporary("/")
+    Redirect::to("/")
 }
