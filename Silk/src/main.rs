@@ -4,7 +4,6 @@ use tower_http::trace::TraceLayer;
 use tracing::debug; // Use the Router and get types from the axum crate
 
 mod handlers;
-mod state;
 
 use handlers::subscribe; // Import the subscribe module
 
