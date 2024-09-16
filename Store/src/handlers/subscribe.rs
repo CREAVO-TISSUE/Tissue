@@ -11,6 +11,11 @@ pub struct Subscribe {
 }
 
 pub async fn subscribe(Form(subscribe): Form<Subscribe>) -> impl IntoResponse {
-    info!("Subscribed: {}", subscribe.email);
+    let res = reqwest::get("http://127.0.0.1:4080/subscribe").await;
+    if res.unwrap().status().is_success() {
+        info!("Subscribed: {}", subscribe.email);
+    } else {
+        info!("Failed to subscribe: {}", subscribe.email);
+    }
     Redirect::to("/")
-}
+    }

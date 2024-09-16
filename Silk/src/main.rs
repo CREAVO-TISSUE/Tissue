@@ -21,8 +21,6 @@ async fn main() -> Result<()> {
 
     let pool = sqlx::sqlite::SqlitePool::connect(DATABASE_URL).await?; // Connect to the database
 
-
-
     let app = Router::new() // Create a new Router
         .route("/subscribe", post(subscribe)) // Add a route to the Router
         .with_state(pool) // Add the AppContext to the Router
