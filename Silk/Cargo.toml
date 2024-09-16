@@ -6,7 +6,7 @@ edition = "2021"
 [dependencies]
 anyhow = { version = "1.0.87", features = ["backtrace"] }
 axum = { version = "0.7.5", features = ["macros", "tokio"] }
-sqlx = { version = "0.6.3", features = [
+sqlx = { version = "0.8.2", features = [
     "sqlite",
     "macros",
     "runtime-tokio-rustls",

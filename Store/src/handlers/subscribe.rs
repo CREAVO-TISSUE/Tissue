@@ -18,4 +18,4 @@ pub async fn subscribe(Form(subscribe): Form<Subscribe>) -> impl IntoResponse {
         info!("Failed to subscribe: {}", subscribe.email);
     }
     Redirect::to("/")
-    }
+}
