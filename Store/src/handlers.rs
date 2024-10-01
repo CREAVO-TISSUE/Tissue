@@ -1,9 +1,10 @@
 use crate::templates::{IndexTemplate, PricingTemplate};
 use askama::Template;
 use axum::{
+    body::Body,
     debug_handler,
     extract::Path,
-    http::{header, HeaderMap, StatusCode},
+    http::{header, HeaderMap, Response, StatusCode},
     response::IntoResponse,
 };
 
@@ -11,16 +12,22 @@ mod subscribe;
 
 pub use subscribe::subscribe;
 
-static THEME_CSS: &str = include_str!("../assets/theme.css");
+static THEME_CSS: &str = include_str!("../assets/style/theme.css");
+static INDEX_HEADER_IMAGE: &[u8] = include_bytes!("../assets/static/rocket_in_desert.webp");
 
-pub async fn assets(Path(path): Path<String>) -> impl IntoResponse {
+#[axum::debug_handler]
+pub async fn assets(Path(path): Path<String>) -> Response<Body> {
     let mut headers = HeaderMap::new();
     match path.as_str() {
         "theme.css" => {
             headers.insert(header::CONTENT_TYPE, "text/css".parse().unwrap());
-            (StatusCode::OK, headers, THEME_CSS)
+            (StatusCode::OK, headers, THEME_CSS).into_response()
         }
-        _ => (StatusCode::NOT_FOUND, headers, ""),
+        "rocket_in_desert.webp" => {
+            headers.insert(header::CONTENT_TYPE, "image/webp".parse().unwrap());
+            (StatusCode::OK, headers, INDEX_HEADER_IMAGE).into_response()
+        }
+        _ => (StatusCode::NOT_FOUND, headers, "").into_response(),
     }
 }
 

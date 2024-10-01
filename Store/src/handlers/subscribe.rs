@@ -17,5 +17,5 @@ pub async fn subscribe(Form(subscribe): Form<Subscribe>) -> impl IntoResponse {
     } else {
         info!("Failed to subscribe: {}", subscribe.email);
     }
-    Redirect::to("/")
+    Redirect::to("/?subscribed=true").into_response()
 }

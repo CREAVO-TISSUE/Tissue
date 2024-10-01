@@ -3,6 +3,10 @@
     "tailwindcss": "^3.4.10"
   },
   "scripts": {
-    "build": "tailwindcss -i ./src/theme.css -o ./theme.css"
+    "build": "tailwindcss -i ./src/theme.scss -o ./style/theme.css",
+    "dev": "tailwindcss -i ./src/theme.scss -o ./style/theme.css --watch"
+  },
+  "dependencies": {
+    "sass": "^1.79.3"
   }
 }
