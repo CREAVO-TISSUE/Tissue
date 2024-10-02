@@ -16,7 +16,7 @@ async fn handler() -> impl IntoResponse {
 async fn main() -> Result<()> {
     tracing_subscriber::fmt::init();
     // Create a new router
-    let app = Router::new().route("/fx", get(handler));
+    let app = Router::new().route("/fx/:from/:to", get(handler));
 
     // Start the server
     let listener = tokio::net::TcpListener::bind("127.0.0.1:3000").await?;
