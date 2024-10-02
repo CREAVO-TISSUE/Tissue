@@ -18,7 +18,7 @@ pub async fn subscribe(
     Form(sub): Form<Subscription>,
 ) -> impl IntoResponse {
     let query = format!("INSERT INTO subscriptions (email) VALUES ('{}')", sub.email);
-    if let Ok(_) = sqlx::query(&query).execute(&state).await {
+    if (sqlx::query(&query).execute(&state).await).is_ok() {
         debug!("Subscribed {}", sub.email);
         StatusCode::OK
     } else {
